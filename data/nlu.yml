@@ -1,0 +1,101 @@
+version: "3.0"
+
+nlu:
+- intent: greet
+  examples: |
+   - buenas tardes
+   - buenas noches
+   - hola buenos días
+   - Buenas buenas
+   - cómo estás?
+   - qué tal?
+   - Buen día
+   - Hola
+   - ola
+   - buenas
+   - quiubo
+   - Todo bien?
+  
+- intent: goodbye
+  examples: |
+    - hasta la vista
+    - hasta pronto
+    - chao
+    - hasta luego
+    - suerte
+    - por la esquinita
+    - Adios
+    - Nos vemos
+    - ciao
+    - chau
+
+- intent: affirm
+  examples: |
+    - sí
+    - si
+    - correcto
+    - si claro
+    - afirmativo
+    - así es
+    - bien
+    - ok
+    - en efecto
+    - por supuesto
+    - efectivamento
+    - eso es correcto
+    - estás en lo cierto
+
+- intent: deny
+  examples: |
+    - no
+    - nop
+    - no lo creo
+    - eso no es así
+    - quedó mal
+    - no, ahí nos descachamos
+    - incorrecto
+    - realmente no
+    - no realmente
+    - nope
+    - eso es incorrecto
+    - falso
+
+
+- intent: bot_challenge
+  examples: |
+    - ¿hablo con un bot?
+    - ¿con quién hablo?
+    - estoy hablando con un computador?
+    - tú eres un humano
+    - ¿estoy hablando con un humano?
+
+- intent: thank
+  examples: |
+    - gracias
+    - te lo agradezco
+    - muchas gracias
+
+- intent: out of scope
+  examples: |
+    - dar ejemplos
+
+- intent: inform
+  examples: |
+    - Somos siete personas
+    - No es ninguna ocasion especial
+    - Queremos la reservación para la noche del Jueves.
+    - Tipo 8 o 9
+    - Por la tarde mañana
+    - Para las 8 de la noche
+
+- intent: reservar
+  examples: |
+    - Quisiera reservar una mesa para tres personas
+    - ¿Tienen mesas para mañana?
+    - Necesito una mesa para cinco por la nochecita.
+    - para apartar una mesa.
+    - Para una cena, ¿Hacen reservas?
+    - Voy a apartar una mesa.
+    - Quisiera comer allá mañana.
+    - Para una reserva.
+    - ¿Tienen mesas disponibles?

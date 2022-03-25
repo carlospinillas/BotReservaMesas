@@ -1,0 +1,69 @@
+version: "3.0"
+
+rules:
+
+- rule: despedida
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: saludo
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: de nada
+  steps:
+  - intent: thank
+  - action: utter_denada
+
+- rule: pregunta promo
+  steps:
+  - intent: ask_promociones
+  - action: utter_ask_promociones
+
+- rule: pregunta tiempo
+  steps:
+  - intent: ask_tiempo_reserva
+  - action: utter_ask_tiempo_reserva    
+
+- rule: pregunta horarios
+  steps:
+  - intent: ask_horarios
+  - action: utter_ask_horarios
+
+- rule: pregunta disponibilidad
+  steps:
+  - intent: ask_disponibilidad_mesas
+  - action: utter_ask_disponibilidad_mesas   
+
+
+
+
+- rule: Activate reserva form
+  steps:
+  - intent: reservar
+  - action: utter_claro_que_si
+  - action:reserva_form
+  - active_loop: reserva_form
+
+- rule: Submit form
+  condition:
+  # Condition that form is active.
+  - active_loop: reserva_form
+  steps:
+  # Form is deactivated
+  - action: reserva_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  # - action: action_calcular_costo
+  # - action: utter_unmomento
+  # - action: utter_cotizacion
+

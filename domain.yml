@@ -1,0 +1,118 @@
+version: "3.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+  - reservar
+  - thank
+  - inform
+  - ask_promociones
+  - ask_horarios
+  - ask_disponibilidad_mesas
+  - out_of_scope
+  - ask_tiempo_reserva
+
+entities:
+   - number
+   - nombre
+   - ubicacion
+   - num_personas
+   - ocasion_especial
+   - time
+
+slots:
+  nombre:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: reserva_form
+        requested_slot: nombre 
+  ubicacion:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: reserva_form
+        requested_slot: ubicacion
+  num_personas:
+    type: float
+    mappings:
+    - type: from_entity
+      entity: num_personas
+    - type: from_entity
+      entity: number
+      conditions:
+      - active_loop: reserva_form
+        requested_slot: num_personas
+
+
+responses:
+  utter_greet:
+    - text: Hola, ¿cómo puedo ayudar?
+    - text: Hola, ¿en qué te puedo ayudar?
+    - text: Hola
+  utter_goodbye:
+    - text: hasta luego
+    - text: chao
+  utter_iamabot:
+    - text: Soy un bot.
+  utter_ask_num_personas:
+    - text: ¿Cuántas pasajeronas serían?
+    - text: ¿Para cuántas personas la mesa?
+  utter_ask_ubicacion:
+    - text: ¿Dónde quieres la mesa? Tenemos en e interior y en el patio.
+  utter_ask_ocacion_especial:
+    - text: ¿Y estás celebrando alguna ocasión especial?
+  utter_claro_que_si:
+    - text: Claro que sí.
+    - text: Con mucho gusto.
+    - text: Por supuesto.
+  utter_denada:
+    - text: Con gusto.
+    - text: No hay de qué.
+    - text: Gracias a ti.
+    - text: A tus órdenes.
+    - text: Un placer.
+    - text: Lo que necesites.
+    - text: Con mucho gusto.
+    - text: Para servirte.
+  utter_unmomento:
+    - text: Déjame ver...
+    - text: Un segundo...
+    - text: Perfecto...
+  utter_ask_tiempo_reserva:
+    - text: La reserva estará disponible hast 20 minutos después de la hora apartada.   
+  utter_ask_horarios:
+    - text: Nosotros abrimos a las 12 del medio día y cerramos el restaurante a las 9 de la noche.
+  utter_ask_disponibiidad_de_mesas:
+    - text: Comtamos con 6 mesas en el interior y 4 mesas en la terraza. A cada mesa le caben 4 personas cómodas.
+  utter_ask_promociones:
+    - text: Los Jueves y Viernes tenemos Happy hour desde las 4 de la tarde a las 6.
+
+
+
+actions:
+#  - hacer_reserva
+# cancelar reserva
+
+
+
+forms:
+  reserva_form:
+    required_slots:
+        - ubicacion
+#       - time
+        - num_personas
+        - nombre
+
+
+
+e2e_actions: []
+
+#session_config:
+#  session_expiration_time: 60
+#  carry_over_slots_to_new_session: true
